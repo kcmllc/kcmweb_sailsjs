@@ -1,0 +1,69 @@
+var request = require('request');
+var csv = require('csv-streamify');
+var _ = require('underscore');
+
+var firstParser = csv({objectMode: true, columns: true});
+var secondParser = csv({objectMode: true, columns: true});
+
+var tickerInfo = [];
+
+firstParser.on('readable', function(){
+    var row = firstParser.read();
+    tickerInfo.push(row);
+    //console.log(Object.keys(row));
+});
+
+secondParser.on('readable', function(){
+    var row = secondParser.read();
+    //var keys = Object.keys(row);
+    for (var obj in tickerInfo){
+        if (obj['ticker'] == row['ticker']){
+            obj = _.extend(obj, row);
+            console.log(obj);
+        }
+    }
+});
+
+//FinViz Overview
+request('http://finviz.com/export.ashx?v=111', function(err, response, body) {}).pipe(firstParser);
+//console.log(tickerInfo.length);
+//FinViz Valuation
+request('http://finviz.com/export.ashx?v=121', function(err, response, body) {}).pipe(secondParser);
+    
+//console.log(tickerInfo[0]);
+    
+// //Finviz Financial
+// request('http://finviz.com/export.ashx?v=161', function(err, response, body) {})
+//     .pipe(parser = csv.parse({
+//         columns: true
+//     }, function(err, data) {
+//         tickerInfo = data
+//         console.log(tickerInfo[0])
+// }))
+    
+// //Finviz Ownership
+// request('http://finviz.com/export.ashx?v=131', function(err, response, body) {})
+//     .pipe(parser = csv.parse({
+//         columns: true
+//     }, function(err, data) {
+//         tickerInfo = data
+//         console.log(tickerInfo[0])
+// }))
+    
+// //Finviz Performance
+// request('http://finviz.com/export.ashx?v=141', function(err, response, body) {})
+//     .pipe(parser = csv.parse({
+//         columns: true
+//     }, function(err, data) {
+//         tickerInfo = data
+//         console.log(tickerInfo[0])
+// }))
+    
+// //Finviz Technical
+// request('http://finviz.com/export.ashx?v=171', function(err, response, body) {})
+//     .pipe(parser = csv.parse({
+//         columns: true
+//     }, function(err, data) {
+//         tickerInfo = data
+//         console.log(tickerInfo[0])
+// }))

@@ -1,0 +1,26 @@
+extends layout
+block content
+    h1 Financial Intel
+    .container(ng-app='articles', ng-controller='newArticleCtrl')
+        form.form-horizontal(role='form')
+            .form-group
+                input.form-control(type='text', placeholder='Enter Publication', ng-model='newArticle.publication_name')
+            .form-group
+                input.form-control(type='text', placeholder='Article Title', ng-model='newArticle.article_title')
+            .form-group
+                input.form-control(type='date', ng-model='newArticle.publication_date')
+            .form-group
+                textarea.form-control(placeholder='Article Text', rows='20', ui-tinymce, ng-model='newArticle.article_text')
+            .form-group
+                input.form-control(type='text', placeholder='Tags', ng-model='newArticle.article_tags')
+            .form-group
+                input.form-control(type='text', placeholder='Ticker', ng-model='newArticle.ticker')
+            .form-group
+                input.form-control(type='text', placeholder='Thoughts/Response', ng-model='newArticle.thoughts_response')
+            .form-group
+                button.btn.btn-default.pull-right(type='submit', ng-click='submitArticle()') Submit
+
+
+
+
+        script(src='/js/controllers/articles.js')

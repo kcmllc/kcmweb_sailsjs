@@ -1,0 +1,32 @@
+/**
+* Ticker.js
+*
+* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @docs        :: http://sailsjs.org/#!documentation/models
+*/
+
+module.exports = {
+  connection: 'mysql',
+  identity      : 'Ticker',
+  tableName     : 'finviz_overview',
+  migrate       : 'safe',
+  schema        : true,
+  autoPK        : false,
+  autoCreatedAt : false,
+  autoUpdatedAt : false,
+
+  attributes: {
+  ticker: { type: 'string' },
+  company_name: { type: 'string' },
+  company_sector: { type: 'string' },
+  company_industry: { type: 'string' },
+  company_country: { type: 'string' },
+  market_cap: { type: 'string' },
+  price_to_earnings: { type: 'string' },
+  last_price: { type: 'string' },
+  last_change:{ type: 'string' },
+  last_volume: { type: 'integer' }
+
+  }
+};
+
