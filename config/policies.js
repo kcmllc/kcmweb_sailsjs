@@ -48,4 +48,15 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+	StrategyController: {
+		'*': ['isLoggedIn'],
+		get: ['isLoggedIn'],
+		update: ['isLoggedIn']
+	},
+	ArticleController:{
+		'*': 'isLoggedIn'
+	},
+	TickerController: {
+		'*': 'isLoggedIn'
+	}
 };

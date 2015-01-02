@@ -1,0 +1,130 @@
+      <h1>Strategy</h1>
+      <div id="strategy" ng-controller="strategyCtrl" class="container">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Cycle Position</th>
+              <th>Macro Strategy</th>
+              <th>Tactical Strategy</th>
+              <th>Guidance</th>
+              <th>Portfolio</th>
+              <th>Watchlist</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="strategy in strategies track by $index">
+              <td>{{strategy.ticker}}</td>
+              <td>
+                <select ng-model="strategy.cycle_position">{{strategy.cycle_position}}
+                  <option value="Early">Early</option>
+                  <option value="Mid">Mid</option>
+                  <option value="Late">Late</option>
+                </select>
+              </td>
+              <td>
+                <select ng-model="strategy.macro_strategy">{{strategy.macro_strategy}}
+                  <option value="Income">Income</option>
+                  <option value="Domestic Growth">Domestic Growth</option>
+                  <option value="Global Growth">Global Growth</option>
+                  <option value="Defensive">Defensive</option>
+                </select>
+              </td>
+              <td>
+                <select ng-model="strategy.tactical_strategy">{{strategy.tactical_strategy}}
+                  <option value="Inflation Hedge">Inflation Hedge</option>
+                  <option value="Income">Income</option>
+                </select>
+              </td>
+              <td>
+                <select ng-model="strategy.guidance">{{strategy.guidance}}
+                  <option value="Buy">Buy</option>
+                  <option value="Hold">Hold</option>
+                  <option value="Sell">Sell</option>
+                  <option value="Short">Short</option>
+                </select>
+              </td>
+              <td>
+                <input type="checkbox" ng-model="strategy.portfolio">
+              </td>
+              <td>
+                <input type="checkbox" ng-model="strategy.watchlist">
+              </td>
+              <td>
+                <button ng-click="update(strategy)" class="btn btn-primary">Update</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div style="text-align: center" class="h3 panel-title">Add Strategy</div>
+          </div>
+          <div class="panel-body">
+            <table newstrategytable class="table">
+              <thead>
+                <tr>
+                  <th>Ticker</th>
+                  <th>Cycle Position</th>
+                  <th>Macro Strategy</th>
+                  <th>Tactical Strategy</th>
+                  <th>Guidance</th>
+                  <th>Portfolio</th>
+                  <th>Watchlist</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="text" ng-model="newstrategy.ticker">
+                  </td>
+                  <td>
+                    <select ng-model="newstrategy.cycle_position">
+                      <option value="Early">Early</option>
+                      <option value="Mid">Mid</option>
+                      <option value="Late">Late</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select ng-model="newstrategy.macro_strategy">
+                      <option value="Income">Income</option>
+                      <option value="Domestic Growth">Domestic Growth</option>
+                      <option value="Global Growth">Global Growth</option>
+                      <option value="Defensive">Defensive</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select ng-model="newstrategy.tactical_strategy">
+                      <option value="Inflation Hedge">Inflation Hedge</option>
+                      <option value="Income">Income</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select ng-model="newstrategy.guidance">
+                      <option value="Buy">Buy</option>
+                      <option value="Hold">Hold</option>
+                      <option value="Sell">Sell</option>
+                      <option value="Short">Short</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="checkbox" ng-model="newstrategy.portfolio">
+                  </td>
+                  <td>
+                    <input type="checkbox" ng-model="newstrategy.watchlist">
+                  </td>
+                  <td>
+                    <button ng-click="create(newstrategy)" class="btn btn-primary">Add</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--<script src="/js/controllers/strategy.js"></script>-->
+    </div>
+  </body>
+</html>

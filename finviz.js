@@ -150,7 +150,7 @@ technical_parser.on('readable', function(){
     }, function(err, doc){ if (err) throw err;});
 });
 //FinViz Overview
-request('http://finviz.com/export.ashx?v=111', function(err, response, body) {empty_ticker; empty_finviz_overview;}).pipe(overview_parser);
+request('http://finviz.com/export.ashx?v=111', function(err, response, body) {console.log(body);empty_ticker; empty_finviz_overview;}).pipe(overview_parser);
 // .on('finish', function(){console.log("I'm Done"); process.exit()});
 
 //FinViz Valuation

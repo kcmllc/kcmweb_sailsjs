@@ -21,7 +21,8 @@ module.exports = {
     article_title: { type: 'string' },
     article_text: { type: 'text' },
     article_tags: {type: 'string' },
-    ticker: { type: 'string' }
+    ticker: { type: 'string' }, 
+    thoughts_response: {type: 'string'}
   }
 };
 

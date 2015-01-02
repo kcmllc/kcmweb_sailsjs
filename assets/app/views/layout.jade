@@ -27,7 +27,6 @@ html
         script(src="/js/bower_components/angular-feeds/app/angular-feeds/angular-feeds.js")
         script(src='/app/app.js')
         script(src='/app/controllers/finintel.js')
-        script(src="/app/controllers/strategy.js")
         
     body(ng-app='kcmapp')
         #sidebar.navmenu.navmenu-fixed-right.offcanvas(ng-controller='indexCtrl')
@@ -49,9 +48,9 @@ html
                             a(href='#about') About
                         li
                             a(href='#contact') Contact
-                        if req.session.username    
+        
                             li.dropdown
-                                a.dropdown-toggle(href='', data-toggle='dropdown') Admin
+                                a.dropdown-toggle(href='#', data-toggle='dropdown') Admin
                                     span.caret
                                 ul.dropdown-menu(role='menu')
                                     li
@@ -70,24 +69,23 @@ html
                             span.icon-bar
                             span.icon-bar
                             span.icon-bar
-                        if req.session.username
+             
                             li.dropdown(style='float:right')
-                                a.dropdown-toggle(href='', data-toggle='dropdown') Hello #{req.session.username}
+                                a.dropdown-toggle(href='#', data-toggle='dropdown') Hello ''
                                     span.caret
                                 ul.dropdown-menu
                                     li
                                         a(href='/auth/logout') Logout
-                        else
+         
                             li.dropdown(style='float:right')
-                                a.dropdown-toggle(href='', data-toggle='dropdown') Hello Guest
+                                a.dropdown-toggle(href='#', data-toggle='dropdown') Hello Guest
                                     span.caret
                                 ul.dropdown-menu
                                     li
                                         a(href='/auth/login') Login
-        // leftbar(style='position: fixed; left: 0; height: 100vh; background-color: lightgrey; width: 120px; border: 1px solid black;')
-        // rightbar(style='float: right;  height: 100vh;background-color: grey; width: 120px; border: 1px solid black;')
+
 
         .container.mainpage(ng-view)
             block content
-            // script(src='/app/controllers/sidebar.js')
+            
 

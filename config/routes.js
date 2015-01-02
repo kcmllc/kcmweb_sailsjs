@@ -46,13 +46,21 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'GET /finintel': {
-    view: 'finintel'
-  },
-  'GET /articles': {
-    view: 'articles'
-  },
-  'GET /articles/:id': {
-    view: 'viewarticle'
-  }
+  // 'GET /finintel': {
+  //   view: 'finintel'
+  // },
+  // 'GET /articles': {
+  //   view: 'articles'
+  // },
+  // 'GET /articles/:id': {
+  //   view: 'viewarticle'
+  // },
+  // 'GET /trading_journal': {
+  //   view: 'trading_journal'
+  // },
+  // '/tradier/watchlist': 'TradierController.updatewatchlist'
+  
+  // '/auth/login': 'AuthController.login',
+  // '/auth/logout': 'AuthController.logout',
+  // '/auth/oauth2callback': 'AuthController.oauth2callback'
 };

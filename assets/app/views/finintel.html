@@ -1,0 +1,252 @@
+<div style=' width: 100vw; position: fixed' class=''>
+  <ul class='container' style='background-color: white;'>
+    <li style='display: inline'><a style='color:grey' ng-href='#/finintel/#overview'>Overview</a></li>
+    <li style='display: inline'><a style='color:grey'ng-href='#/finintel/#profitability'>Profitability</a></li>
+    <li style='display: inline'><a style='color:grey'ng-href='#/finintel/#valuation'>Valuation</a></li>
+    <li style='display: inline'><a style='color:grey'ng-href='#/finintel/#strategy'>Strategy</a></li>
+    <li style='display: inline'><a style='color:grey'ng-href='#/finintel/#articles'>Articles</a></li>
+    <li style='display: inline'><a style='color:grey'ng-href='#/finintel/#news'>News</a></li>
+    <li style='display: inline'><a style='color:grey'ng-href='#/finintel/#chart'>Chart</a></li>
+  </ul>
+</div>
+<!-- extends layout-->
+<h1>Financial Intel</h1>
+<div id="finintel" ng-controller="finintelCtrl" class="container" style='padding-top: 0px'>
+  <div class="row">
+    <form role="form" class="navbar-form pull-right">
+      <div class="form-group">
+        <input type="text" placeholder="Enter Ticker" ng-model="ticker" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <button type="submit" ng-click="getTicker()" class="btn btn-default pull-right">Search</button>
+      </div>
+    </form>
+  </div>
+  <div class="panel panel-default" id='overview'>
+    <div class="panel-heading">
+      <div style="text-align: center" class="h3 panel-title">Company Overview</div>
+    </div>
+    <div class="panel-body">
+      <table id="companytable" class="table">
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Company Name</th>
+            <th>Sector</th>
+            <th>Industry</th>
+            <th>Country</th>
+            <th>Market Cap</th>
+            <th>Next Earnings Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{overview.ticker}}</td>
+            <td>{{overview.company_name}}</td>
+            <td>{{overview.company_sector}}</td>
+            <td>{{overview.company_industry}}</td>
+            <td>{{overview.company_country}}</td>
+            <td>{{overview.market_cap}}M</td>
+            <td>{{financials.next_earnings_date}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><br/>
+  <div class="panel panel-default" id='profitability'>
+    <div class="panel-heading">
+      <div style="text-align: center" class="h3 panel-title">Profitability & Effectiveness</div>
+    </div>
+    <div class="panel-body">
+      <table profitabilitytable="profitabilitytable" class="table">
+        <thead>
+          <tr>
+            <th>Dividend Yield</th>
+            <th>Return on Assets</th>
+            <th>Return on Equity</th>
+            <th>Return on Investment</th>
+            <th>Current Ratio</th>
+            <th>Quick Ratio</th>
+            <th>Long Term Debt/Equity</th>
+            <th>Debt/Equity</th>
+            <th>Gross Margin</th>
+            <th>Operating Margin</th>
+            <th>Profit Margin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{financials.dividend_yield}}</td>
+            <td>{{financials.return_on_assets}}</td>
+            <td>{{financials.return_on_equity}}</td>
+            <td>{{financials.return_on_investment}}</td>
+            <td>{{financials.current_ratio}}</td>
+            <td>{{financials.quick_ratio}}</td>
+            <td>{{financials.long_term_debt_to_equity}}</td>
+            <td>{{financials.debt_to_equity}}</td>
+            <td>{{financials.gross_margin}}</td>
+            <td>{{financials.operating_margin}}</td>
+            <td>{{financials.profit_margin}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><br/>
+  <div class="panel panel-default" id='valuation'>
+    <div class="panel-heading">
+      <div style="text-align: center" class="h3 panel-title">Valuation</div>
+    </div>
+    <div class="panel-body">
+      <table id="valuationtable" class="table">
+        <thead>
+          <tr></tr>
+          <th>Forward Price to Earnings</th>
+          <th>PEG Ratio</th>
+          <th>Price to Sales</th>
+          <th>Price to Book</th>
+          <th>Price to Cash</th>
+          <th>Price to FCF</th>
+          <th>EPS Growth This Year</th>
+          <th>EPS Growth Next Year</th>
+          <th>EPS Growth Past 5 Years</th>
+          <th>EPS Growth Next 5 Years</th>
+          <th>Sales Growth Past 5 Years</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{valuation.forward_price_to_earnings}}</td>
+            <td>{{valuation.price_earnings_growth}}</td>
+            <td>{{valuation.price_to_sales}}</td>
+            <td>{{valuation.price_to_book}}</td>
+            <td>{{valuation.price_to_cash}}</td>
+            <td>{{valuation.price_to_fcf}}</td>
+            <td>{{valuation.eps_growth_this_year}}</td>
+            <td>{{valuation.eps_growth_next_year}}</td>
+            <td>{{valuation.eps_growth_past_five_years}}</td>
+            <td>{{valuation.eps_growth_next_five_years}}</td>
+            <td>{{valuation.sales_growth_past_five_years}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><br/>
+  <div class="panel panel-default" id='strategy'>
+    <div class="panel-heading">
+      <div style="text-align: center" class="h3 panel-title">Strategy</div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Cycle Position</th>
+            <th>Macro Strategy</th>
+            <th>Tactical Strategy</th>
+            <th>Guidance</th>
+            <th>Portfolio</th>
+            <th>Watchlist</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="strategy in strategies track by $index">
+            <td>{{strategy.ticker}}</td>
+            <td>
+              <select ng-model="strategy.cycle_position">{{strategy.cycle_position}}
+                <option value="Early">Early</option>
+                <option value="Mid">Mid</option>
+                <option value="Late">Late</option>
+              </select>
+            </td>
+            <td>
+              <select ng-model="strategy.macro_strategy">{{strategy.macro_strategy}}
+                <option value="Income">Income</option>
+                <option value="Domestic Growth">Domestic Growth</option>
+                <option value="Global Growth">Global Growth</option>
+                <option value="Defensive">Defensive</option>
+              </select>
+            </td>
+            <td>
+              <select ng-model="strategy.tactical_strategy">{{strategy.tactical_strategy}}
+                <option value="Inflation Hedge">Inflation Hedge</option>
+                <option value="Income">Income</option>
+              </select>
+            </td>
+            <td>
+              <select ng-model="strategy.guidance">{{strategy.guidance}}
+                <option value="Buy">Buy</option>
+                <option value="Hold">Hold</option>
+                <option value="Sell">Sell</option>
+                <option value="Short">Short</option>
+              </select>
+            </td>
+            <td>
+              <input type="checkbox" ng-model="strategy.portfolio"/>
+            </td>
+            <td>
+              <input type="checkbox" ng-model="strategy.watchlist" ng-change="updateWatchlist(strategy)"/>
+            </td>
+            <td>
+              <button ng-click="update(strategy)" class="btn btn-primary">Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><br/>
+  <div class="panel panel-default" id='articles'>
+    <div class="panel-heading">
+      <div style="text-align: center" class="h3 panel-title">Articles/Research</div>
+    </div>
+    <div class="panel-body">
+      <table id="articletable" class="table">
+        <thead>
+          <tr>
+            <th >Title</th>
+            <th>Article Date</th>
+            <th>Thoughts/Response</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="article in articles">
+            <td style="width: 300px"><a href="/articles/{{article.id}}">{{article.article_title}}</a></td>
+            <td style="width: 100px">{{article.publication_date | date:'MMM dd yyyy'}}</td>
+            <td>{{article.thoughts_response}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><br/>
+  <div class="panel panel-default" id='news'>
+    <div class="panel-heading">
+      <div style="text-align: center" class="h3 panel-title">Company News</div>
+    </div>
+    <div class="panel-body">
+      <table id="articletable" class="table">
+        <thead>
+          <tr>
+            <th style='text-align: center'>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style='text-align: center' id='seekingalpha'>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><br/>
+  <div class="panel panel-default" id='chart' style='margin-top: -50px; padding-top: 50px'>
+    <div class="panel-heading">
+      <div style="text-align: center" class="h3 panel-title">Chart</div>
+    </div>
+    <div class="panel-body">
+      <table id="charttable" class="table">
+        <tbody></tbody>
+        <tr>
+          <td style="text-align: center"><img src="http://finviz.com/chart.ashx?t={{valuation.ticker}}&amp;ty=c&amp;ta=1&amp;p=d&amp;s=l"/></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div><span></span>
+<!--<script src="/js/controllers/finintel.js"></script>-->

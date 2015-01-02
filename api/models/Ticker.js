@@ -17,6 +17,7 @@ module.exports = {
 
   attributes: {
     ticker: {type: 'string', primaryKey: true},
+    dividend_month: {type: 'string'},
     strategy: {collection: 'Strategy', via: 'ticker_intel'},
     overview: {collection: 'FinVizOverview', via: 'ticker_intel'},
     financials: {collection: 'FinVizFinancial', via: 'ticker_intel'},
